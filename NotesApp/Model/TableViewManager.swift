@@ -27,13 +27,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.id)
         tableView.delegate = self
         tableView.dataSource = self
+        
         view.addSubview(tableView)
-        tableView.backgroundColor = .systemGray2.withAlphaComponent(0.2)
-        tableView.separatorColor = .systemGray2.withAlphaComponent(0.2)
+        
+        tableView.backgroundColor = .systemBackground
+        tableView.separatorColor = .systemOrange.withAlphaComponent(0.3)
         self.tableView = tableView
 
         tableView.snp.makeConstraints { make in
-            make.top.left.right.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view).inset(183)
+            make.left.right.equalTo(view)
             make.bottom.equalTo(view)
         }
     }
@@ -56,6 +59,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.id, for: indexPath) as? NoteCell else {
             return UITableViewCell()
         }
+        
         if isSearching {
             cell.configure(note: searchedNotes[indexPath.row])
         } else {
@@ -64,7 +68,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.configureLabels()
         cell.selectionStyle = .none
-        cell.contentView.backgroundColor = .systemGray2.withAlphaComponent(0.2)
+        cell.contentView.backgroundColor = .systemBackground
         
         return cell
     }

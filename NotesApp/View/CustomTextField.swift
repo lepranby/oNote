@@ -14,10 +14,9 @@ class CustomTextField: UITextField {
         self.font = font
         self.autocorrectionType = .no
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: UIColor.black.withAlphaComponent(0.3)
+            .font: font
         ]
-        self.attributedPlaceholder = NSAttributedString(string: "Загаловак", attributes: attributes)
+        self.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes)
     }
     
     required init?(coder: NSCoder) {

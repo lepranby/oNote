@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		261438BB29A2BA65009F41CD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 261438BA29A2BA65009F41CD /* SnapKit */; };
-		261438BD29A49C90009F41CD /* SettingsLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261438BC29A49C90009F41CD /* SettingsLanguage.swift */; };
-		261438BF29A49CD2009F41CD /* SettingsViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261438BE29A49CD2009F41CD /* SettingsViewSettings.swift */; };
-		26BA2299299F563D00748ADE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BA2298299F563D00748ADE /* SettingsViewController.swift */; };
 		C865FA5C27973AE000F0270E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865FA5B27973AE000F0270E /* CustomTextField.swift */; };
 		C865FA5E27973C4A00F0270E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865FA5D27973C4A00F0270E /* CustomTextView.swift */; };
 		C8BED24D2797887A009F32C0 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BED24C2797887A009F32C0 /* TableViewManager.swift */; };
@@ -29,9 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		261438BC29A49C90009F41CD /* SettingsLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguage.swift; sourceTree = "<group>"; };
-		261438BE29A49CD2009F41CD /* SettingsViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSettings.swift; sourceTree = "<group>"; };
-		26BA2298299F563D00748ADE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C865FA5B27973AE000F0270E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C865FA5D27973C4A00F0270E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		C8BED24C2797887A009F32C0 /* TableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
@@ -63,20 +57,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		261438C029A49CF9009F41CD /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				26BA2298299F563D00748ADE /* SettingsViewController.swift */,
-				261438BC29A49C90009F41CD /* SettingsLanguage.swift */,
-				261438BE29A49CD2009F41CD /* SettingsViewSettings.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		C8BED24F27978FA8009F32C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				261438C029A49CF9009F41CD /* Settings */,
 				C8DC76D1278E0F3200E77A52 /* NoteViewController.swift */,
 				C8DC76BD278E0E5200E77A52 /* MainViewController.swift */,
 			);
@@ -213,18 +196,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				261438BF29A49CD2009F41CD /* SettingsViewSettings.swift in Sources */,
 				C8DC76BE278E0E5200E77A52 /* MainViewController.swift in Sources */,
 				C8CFCAE9279972BA000E035B /* CoreDataProperties.swift in Sources */,
 				C8DC76BA278E0E5200E77A52 /* AppDelegate.swift in Sources */,
 				C8BED24D2797887A009F32C0 /* TableViewManager.swift in Sources */,
 				C8F5D2FF278F18EA006580EB /* Extensions.swift in Sources */,
 				C8DC76D0278E0E9200E77A52 /* NoteCell.swift in Sources */,
-				261438BD29A49C90009F41CD /* SettingsLanguage.swift in Sources */,
 				C8DC76BC278E0E5200E77A52 /* SceneDelegate.swift in Sources */,
 				C8CFCAE8279972BA000E035B /* CoreDataClass.swift in Sources */,
 				C865FA5E27973C4A00F0270E /* CustomTextView.swift in Sources */,
-				26BA2299299F563D00748ADE /* SettingsViewController.swift in Sources */,
 				C8CFCAEB27998382000E035B /* CoreDataManager.swift in Sources */,
 				C8DC76D2278E0F3200E77A52 /* NoteViewController.swift in Sources */,
 				C865FA5C27973AE000F0270E /* CustomTextField.swift in Sources */,

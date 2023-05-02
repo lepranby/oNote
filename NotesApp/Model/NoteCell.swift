@@ -13,9 +13,9 @@ class NoteCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .white
-        textLabel?.font = .systemFont(ofSize: 24, weight: .semibold)
-        detailTextLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        self.backgroundColor = .systemBackground
+        textLabel?.font = .systemFont(ofSize: 22, weight: .semibold)
+        detailTextLabel?.font = .systemFont(ofSize: 18, weight: .regular)
         setupDateLabel()
     }
     
@@ -32,25 +32,22 @@ class NoteCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-//    func checkMarkIcon () {
-//        let image = UIImageView(image: .init(systemName: "check"))
-//    }
+
     
     private func setupDateLabel() {
         
-        dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
-        dateLabel.textAlignment = .center
+        dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 25))
+        dateLabel.textAlignment = .right
         accessoryView = dateLabel
-        dateLabel.textColor = .black.withAlphaComponent(0.6)
-        dateLabel.font = .systemFont(ofSize: 16, weight: .light)
+        dateLabel.font = .systemFont(ofSize: 15, weight: .light)
     }
     
     func configureLabels() {
         
         self.textLabel?.text = note?.title ?? ""
-        self.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        self.textLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
         self.detailTextLabel?.text = note?.text ?? ""
-        self.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .light)
+        self.detailTextLabel?.font = .systemFont(ofSize: 14, weight: .light)
         self.detailTextLabel?.numberOfLines = 2
         
         guard let note = note else {
@@ -61,7 +58,7 @@ class NoteCell: UITableViewCell {
         if Date.isToday(day: note.date.get(.day)) {
             formatter.dateFormat = "HH:mm"
         } else if Date.isThisYear(year: note.date.get(.year)) {
-            formatter.dateFormat = "d.MM"
+            formatter.dateFormat = "dd.MM"
         } else {
             formatter.dateFormat = "MM/dd/yyyy"
         }

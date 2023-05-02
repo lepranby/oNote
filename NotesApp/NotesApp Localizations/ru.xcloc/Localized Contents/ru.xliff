@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="NotesApp/Base.lproj/LaunchScreen.storyboard" source-language="en" target-language="ru" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="G0W-BI-hi2.text" xml:space="preserve">
+        <source>oNote</source>
+        <target>oNote</target>
+        <note>Class = "UILabel"; text = "oNote"; ObjectID = "G0W-BI-hi2";</note>
+      </trans-unit>
+      <trans-unit id="Uoc-rX-Ff1.text" xml:space="preserve">
+        <source>Нататкі 🇧🇾 Нотатки 🇺🇦 Notes 🇺🇸</source>
+        <target>Нататкі 🇧🇾 Нотатки 🇺🇦 Notes 🇺🇸</target>
+        <note>Class = "UILabel"; text = "Нататкі 🇧🇾 Нотатки 🇺🇦 Notes 🇺🇸"; ObjectID = "Uoc-rX-Ff1";</note>
+      </trans-unit>
+      <trans-unit id="tzV-Pb-pKh.text" xml:space="preserve">
+        <source>Anmerkungen 🇩🇪 Notatki 🇵🇱</source>
+        <target>Anmerkungen 🇩🇪 Notatki 🇵🇱</target>
+        <note>Class = "UILabel"; text = "Anmerkungen 🇩🇪 Notatki 🇵🇱"; ObjectID = "tzV-Pb-pKh";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="NotesApp/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>oNote</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>NotesApp</source>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

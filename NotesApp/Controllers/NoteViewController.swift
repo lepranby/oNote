@@ -6,23 +6,30 @@
 import UIKit
 
 class NoteViewController: UIViewController {
+    
     private var noteId: String!
     private var textView: UITextView!
     private var textField: UITextField!
     private var index: Int!
+    
     var noteCell: NoteCell?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         index = MainViewController.notes.firstIndex(where: {$0.id == noteId})!
-        view.backgroundColor = .white
+        
+        view.backgroundColor = .systemBackground
         self.navigationItem.largeTitleDisplayMode = .never
+        
         setupNavigationBarItem()
         setupTextView()
         setupTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    
         super.viewWillAppear(animated)
         
         let note = MainViewController.notes[index]
@@ -31,10 +38,11 @@ class NoteViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
-        guard let noteCell = noteCell else {
-            return
-        }
+        
+        guard let noteCell = noteCell else { return }
+        
         noteCell.prepareNote()
         noteCell.configure(note: MainViewController.notes[index])
         noteCell.configureLabels()
@@ -42,15 +50,18 @@ class NoteViewController: UIViewController {
     
     private func setupNavigationBarItem() {
         
-        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.systemOrange
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: (UIImage(systemName: "app.badge.checkmark"))?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissKeyboard))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: (UIImage(systemName: "app.badge.checkmark"))?.withTintColor(UIColor.systemTeal, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissKeyboard))
     }
 
     private func setupTextView() {
+        
         textView = CustomtextView(frame: .zero)
         view.addSubview(textView)
+        
         textView.delegate = self
+        
         NSLayoutConstraint.activate([
             textView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.size.height * 0.09),
@@ -60,6 +71,7 @@ class NoteViewController: UIViewController {
     }
     
     private func setupTextField() {
+        
         textField = CustomTextField(frame: .zero)
         view.addSubview(textField)
         textField.delegate = self
@@ -70,7 +82,6 @@ class NoteViewController: UIViewController {
             textField.heightAnchor.constraint(equalToConstant: 30),
             textField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30)
         ])
-
     }
     
     func set(noteId: String) {
@@ -99,6 +110,10 @@ extension NoteViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc func emptyLeftButton () {
+        print("logo tapped")
     }
     
 }
