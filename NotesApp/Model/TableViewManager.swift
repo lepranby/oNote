@@ -13,6 +13,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let text = searchController.searchBar.text else {
             return false
         }
+        
         return text.isEmpty
     }
     
@@ -21,27 +22,29 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return searchController.isActive && !searchBarIsEmpty
     }
 
-    internal func setupTableView() {
+    internal func setupTableView () {
         
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.id)
         tableView.delegate = self
         tableView.dataSource = self
         
         view.addSubview(tableView)
         
-        tableView.backgroundColor = .systemBackground
-        tableView.separatorColor = .systemOrange.withAlphaComponent(0.3)
+        tableView.backgroundColor = .systemGray6
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorColor = .systemGray.withAlphaComponent(0.5)
         self.tableView = tableView
+        
 
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view).inset(183)
-            make.left.right.equalTo(view)
-            make.bottom.equalTo(view)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view).inset(95)
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView (_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isSearching {
             label.isHidden = true
@@ -53,30 +56,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 72 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 100 }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.id, for: indexPath) as? NoteCell else {
-            return UITableViewCell()
-        }
         
-        if isSearching {
-            cell.configure(note: searchedNotes[indexPath.row])
-        } else {
-            cell.configure(note: MainViewController.notes[indexPath.row])
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.id, for: indexPath) as? NoteCell else { return UITableViewCell() }
+        
+        if isSearching { cell.configure(note: searchedNotes[indexPath.row]) } else { cell.configure(note: MainViewController.notes[indexPath.row]) }
         
         cell.configureLabels()
         cell.selectionStyle = .none
-        cell.contentView.backgroundColor = .systemBackground
+        cell.contentView.backgroundColor = .systemGray6.withAlphaComponent(0.5)
         
         return cell
     }
-
-    // Did select any row by indexPath.Row
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let noteVC = NoteViewController()
+        
         if isSearching {
             noteVC.set(noteId: searchedNotes[indexPath.row].id)
         } else {
@@ -90,28 +88,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(noteVC, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView (_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         removeNote(row: indexPath.row, tableView: tableView)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if isSearching {
-            return false
-        }
+    func tableView (_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if isSearching { return false }
         return true
     }
     
-    internal func removeNote(row: Int, tableView: UITableView) {
+    internal func removeNote (row: Int, tableView: UITableView) {
+        
         deleteNoteFromStorage(at: row)
         MainViewController.notes.remove(at: row)
+        
         let path = IndexPath(row: row, section: 0)
         tableView.deleteRows(at: [path], with: .top)
     }
     
     internal func removeCellIfEmpty() {
-        guard let firstNoteCell = MainViewController.notes.first else {
-            return
-        }
+        guard let firstNoteCell = MainViewController.notes.first else { return }
+        
         if firstNoteCell.title.trimmingCharacters(in: .whitespaces).isEmpty &&
             firstNoteCell.text.trimmingCharacters(in: .whitespaces).isEmpty {
             removeNote(row: 0, tableView: tableView!)

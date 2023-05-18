@@ -20,7 +20,7 @@ class NoteViewController: UIViewController {
         
         index = MainViewController.notes.firstIndex(where: {$0.id == noteId})!
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
         self.navigationItem.largeTitleDisplayMode = .never
         
         setupNavigationBarItem()
@@ -52,13 +52,14 @@ class NoteViewController: UIViewController {
         
         navigationController?.navigationBar.tintColor = UIColor.systemOrange
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: (UIImage(systemName: "app.badge.checkmark"))?.withTintColor(UIColor.systemTeal, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissKeyboard))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: (UIImage(systemName: "keyboard.badge.eye.fill"))?.withTintColor(UIColor.systemTeal, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissKeyboard))
     }
 
     private func setupTextView() {
         
         textView = CustomtextView(frame: .zero)
         view.addSubview(textView)
+        textView.backgroundColor = .systemGray6
         
         textView.delegate = self
         
@@ -73,7 +74,9 @@ class NoteViewController: UIViewController {
     private func setupTextField() {
         
         textField = CustomTextField(frame: .zero)
+        
         view.addSubview(textField)
+        
         textField.delegate = self
         
         NSLayoutConstraint.activate([

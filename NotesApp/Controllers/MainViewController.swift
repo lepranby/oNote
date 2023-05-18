@@ -15,53 +15,54 @@ class MainViewController: UIViewController {
         
     var tableView: UITableView?
     let label = UILabel ()
-    let addButton = UIButton()
-    let remindButton = UIButton ()
+    let addButton = UIButton ()
+    
+    private func setupLabel () {
+        
+        view.addSubview(label)
+        label.text = "No notes yet. You can add a new note right now!"
+        label.font = .systemFont(ofSize: 24, weight: .light)
+        label.textColor = .systemGray
+        label.textAlignment = .center
+        label.numberOfLines = 3
+        
+        label.snp.makeConstraints { make in
+            make.top.equalTo(view).inset(225)
+            make.left.right.equalTo(view).inset(100)
+        }
+    }
+
 
     func setupAddButton () {
 
         addButton.setTitle("New note", for: .normal)
         addButton.setTitleColor(.systemOrange, for: .normal)
-        addButton.backgroundColor = .systemBackground
+        addButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .light)
+        addButton.titleLabel?.textAlignment = .center
+        addButton.configuration?.titleAlignment = .center
+        addButton.backgroundColor = .systemGray6
         addButton.layer.borderWidth = 2
         addButton.layer.borderColor = UIColor.systemOrange.cgColor
-        addButton.layer.cornerRadius = 20
-        addButton.clipsToBounds = true
+        
+//        addButton.setTitle("New note", for: .normal)
+//        addButton.setTitleColor(.white, for: .normal)
+//        addButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .light)
+//        addButton.titleLabel?.textAlignment = .center
+//        addButton.configuration?.titleAlignment = .center
+//        addButton.backgroundColor = .systemOrange
+//        addButton.clipsToBounds = true
+        
+        addButton.layer.cornerRadius = 12
         
         addButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
-        let _: () = addButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        let _: () = addButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         view.addSubview(addButton)
         
         addButton.snp.makeConstraints { make in
-            make.top.equalTo(view).inset(115)
-            make.left.equalTo(view).inset(-20)
-            make.right.equalTo(view).inset(202)
-        }
-        
-    }
-    
-    func setupRemindButton () {
-
-        remindButton.setTitle("New remind", for: .normal)
-        remindButton.setTitleColor(.systemTeal, for: .normal)
-        remindButton.backgroundColor = .systemBackground
-        remindButton.layer.borderWidth = 2
-        remindButton.layer.borderColor = UIColor.systemTeal.cgColor
-        remindButton.layer.cornerRadius = 20
-        remindButton.clipsToBounds = true
-        
-        // remindButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        
-        let _: () = remindButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        
-        view.addSubview(remindButton)
-        
-        remindButton.snp.makeConstraints { make in
-            make.top.equalTo(view).inset(115)
-            make.right.equalTo(view).offset(20)
-            make.left.equalTo(view).inset(202)
+            make.bottom.equalTo(view).inset(40)
+            make.left.right.equalTo(view).inset(18)
         }
         
     }
@@ -69,11 +70,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        
+        view.backgroundColor = .systemGray6
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
         
         definesPresentationContext = true
         
@@ -81,7 +84,7 @@ class MainViewController: UIViewController {
         setupTableView()
         fetchNotesFromStorage()
         
-        setupRemindButton()
+        setupLabel()
         setupAddButton()
     }
     
@@ -109,13 +112,10 @@ class MainViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-        title = "Home"
+        title = "oNotes"
         navigationController?.hidesBarsOnSwipe = false
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.prefersLargeTitles = false
-  
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "oNote", style: .done, target: self, action: #selector(emptyLeftButton))
-//        navigationItem.leftBarButtonItem?.tintColor = .systemTeal
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: (UIImage(systemName: "person.crop.rectangle.stack.fill"))?.withTintColor(UIColor.systemOrange, renderingMode: .alwaysOriginal), style: .plain,  target: self, action: #selector(emptyLeftButton))
         

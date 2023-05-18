@@ -13,9 +13,13 @@ class NoteCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .systemBackground
-        textLabel?.font = .systemFont(ofSize: 22, weight: .semibold)
-        detailTextLabel?.font = .systemFont(ofSize: 18, weight: .regular)
+        self.backgroundColor = .systemGray6.withAlphaComponent(0.5)
+        
+        // If note is creating now...
+        
+        textLabel?.font = .systemFont(ofSize: 24, weight: .regular)
+        detailTextLabel?.font = .systemFont(ofSize: 20, weight: .light)
+        
         setupDateLabel()
     }
     
@@ -36,19 +40,19 @@ class NoteCell: UITableViewCell {
     
     private func setupDateLabel() {
         
-        dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 25))
+        dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
         dateLabel.textAlignment = .right
         accessoryView = dateLabel
-        dateLabel.font = .systemFont(ofSize: 15, weight: .light)
+        dateLabel.font = .systemFont(ofSize: 16, weight: .light)
     }
     
     func configureLabels() {
         
         self.textLabel?.text = note?.title ?? ""
-        self.textLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
+        self.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         self.detailTextLabel?.text = note?.text ?? ""
-        self.detailTextLabel?.font = .systemFont(ofSize: 14, weight: .light)
-        self.detailTextLabel?.numberOfLines = 2
+        self.detailTextLabel?.font = .systemFont(ofSize: 17, weight: .light)
+        self.detailTextLabel?.numberOfLines = 3
         
         guard let note = note else {
             print("Found nil value in variable note")

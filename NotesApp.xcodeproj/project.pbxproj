@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		261438BB29A2BA65009F41CD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 261438BA29A2BA65009F41CD /* SnapKit */; };
+		26BDC2642A0284F100314B0F /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 26BDC2632A0284F100314B0F /* CalendarKit */; };
 		C865FA5C27973AE000F0270E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865FA5B27973AE000F0270E /* CustomTextField.swift */; };
 		C865FA5E27973C4A00F0270E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865FA5D27973C4A00F0270E /* CustomTextView.swift */; };
 		C8BED24D2797887A009F32C0 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BED24C2797887A009F32C0 /* TableViewManager.swift */; };
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				261438BB29A2BA65009F41CD /* SnapKit in Frameworks */,
+				26BDC2642A0284F100314B0F /* CalendarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,7 @@
 			name = NotesApp;
 			packageProductDependencies = (
 				261438BA29A2BA65009F41CD /* SnapKit */,
+				26BDC2632A0284F100314B0F /* CalendarKit */,
 			);
 			productName = NotesApp;
 			productReference = C8DC76B6278E0E5200E77A52 /* NotesApp.app */;
@@ -169,6 +172,7 @@
 			mainGroup = C8DC76AD278E0E5200E77A52;
 			packageReferences = (
 				261438B929A2BA65009F41CD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				26BDC2622A0284F100314B0F /* XCRemoteSwiftPackageReference "CalendarKit" */,
 			);
 			productRefGroup = C8DC76B7278E0E5200E77A52 /* Products */;
 			projectDirPath = "";
@@ -360,6 +364,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +397,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +446,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		26BDC2622A0284F100314B0F /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -447,6 +461,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 261438B929A2BA65009F41CD /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		26BDC2632A0284F100314B0F /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26BDC2622A0284F100314B0F /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
