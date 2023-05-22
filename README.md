@@ -1,6 +1,10 @@
 ## Description
 Swift, UIKit, CoreData | IOS notes app written programmatically without storyboard using UIKit and CoreData
 
+## 22.05.23
+
+- <i>currently working on two new screens ("settings" and "profile")</i>
+
 ## 18.05.23
 
 - Changed style of TableView cells from «insetGrouped» to «plain».
